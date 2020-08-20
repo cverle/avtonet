@@ -13,7 +13,7 @@
             <div class="container">
                 <h3>Add a car:</h3>
                 <hr />
-                <form action="" method="POST">
+                <form action="#" method="POST">
                     <div class="form-group row">
                         <label for="brandsList" class="col-sm-2 col-form-label">Brands</label>
                         <div class="col-sm-10">

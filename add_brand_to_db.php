@@ -7,7 +7,7 @@
         $sql_check_brand="SELECT brands.brand FROM brands WHERE brands.brand = ?";
         $stmt = $pdo->prepare($sql_check_brand);
         $stmt->execute([$brand]);
-        echo $stmt->rowCount();
+        // echo $stmt->rowCount();
         if ($stmt->rowCount() > 0) { 
             header("Location: add_brand.php?err=exists");
             die();
