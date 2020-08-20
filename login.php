@@ -281,7 +281,17 @@ input[type=text]:placeholder,input[type=eamil]:placeholder,input[type=password]:
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
-
+    <?php 
+      if (isset($_GET['err'])){
+          if ($_GET['err']=='incorrect'){
+              echo'
+                  <div class="alert alert-danger" role="alert">
+                      :( uh-oh you have done a fucky wucky :(
+                  </div>
+              ';
+          }
+      }
+    ?>
     
     <!-- Login Form -->
     <form action="login_user.php" method="POST">
