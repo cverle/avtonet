@@ -26,7 +26,7 @@ if (!empty($email) && !empty($pass)) {
     }
 }
 
-header("Location: login.php");
+header("Location: login.php?err=incorrect");
 die();
 
 ?>
