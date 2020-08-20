@@ -28,6 +28,8 @@
                   </label>';
                 } 
               ?>
+              <hr />
+              <a href="add_brand.php" class="btn btn-success">Add brand?</a>
             </div>
           </div>
         </form>
