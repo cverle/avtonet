@@ -320,16 +320,16 @@
     <div id="formContent">
       <!-- Tabs Titles -->
       <?php 
-      if (isset($_GET['err'])){
-          if ($_GET['err']=='incorrect'){
-              echo'
-                  <div class="alert alert-danger" role="alert">
-                    &#128532; uh-oh you have done a fucky wucky &#128532;
-                  </div>
-              ';
-          }
-      }
-    ?>
+        if (isset($_GET['err'])){
+            if ($_GET['err']=='incorrect'){
+                echo'
+                    <div class="alert alert-danger" role="alert">
+                      &#128532; uh-oh you have done a fucky wucky &#128532;
+                    </div>
+                ';
+            }
+        }
+      ?>
 
       <!-- Login Form -->
       <form action="login_user.php" method="POST">
