@@ -11,17 +11,33 @@
   <section class="py-5">
     <div class="container-fluid" style="padding-top:10%;">
       <div class="container">
-        <div class="container">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Brand <a href="add_brand.php" class="btn btn-success">+</a></th>
-                <th scope="col">Models <a href="add_model.php" class="btn btn-success">+</a></th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php
+        <div class="d-flex justify-content-center">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center">
+          <a href="add_car.php" class="btn btn-success">Add car</a>
+        </div>
+      </div>
+      <hr />
+      <div class="container">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Brand <a href="add_brand.php" class="btn btn-success">+</a></th>
+              <th scope="col">Models <a href="add_model.php" class="btn btn-success">+</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
               $select_brand="SELECT brands.brand AS `brand`, brands.id_brands AS `brand_id` FROM `brands` ORDER BY brand ASC;";
               $stmt_brands=$pdo->query($select_brand);
               $num = 0;
@@ -50,9 +66,8 @@
                 $num++;
               } 
             ?>
-            </tbody>
-          </table>
-        </div>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>

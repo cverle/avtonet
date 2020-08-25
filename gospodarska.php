@@ -11,17 +11,20 @@
   <section class="py-5">
     <div class="container-fluid" style="padding-top:10%;">
       <div class="container">
-        <div class="container">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Brand <a href="add_brand.php" class="btn btn-success">+</a></th>
-                <th scope="col">Models <a href="add_model.php" class="btn btn-success">+</a></th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php
+
+      </div>
+      <hr />
+      <div class="container">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Brand <a href="add_brand.php" class="btn btn-success">+</a></th>
+              <th scope="col">Models <a href="add_model.php" class="btn btn-success">+</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
               $select_brand="SELECT brands.brand AS `brand`, brands.id_brands AS `brand_id` FROM `brands` ORDER BY brand ASC;";
               $stmt_brands=$pdo->query($select_brand);
               $num = 0;
@@ -50,9 +53,8 @@
                 $num++;
               } 
             ?>
-            </tbody>
-          </table>
-        </div>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
