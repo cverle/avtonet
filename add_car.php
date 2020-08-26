@@ -50,23 +50,23 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="brandsList" class="col-sm-2 col-form-label">Brands</label>
+                        <label for="brandsList" class="col-sm-2 col-form-label">Fuel type</label>
                         <div class="col-sm-10">
                             <?php
-                                $select_brand="SELECT brands.brand AS `brand`, brands.id_brands AS `id_brand` FROM `brands` ORDER BY brand ASC;";
-                                $stmt=$pdo->query($select_brand);
+                                $select_fuel="SELECT fuel.fuel_type AS `fuel`, fuel.id_fuel AS `id_fuel` FROM fuel ORDER BY fuel.fuel_type ASC;";
+                                $stmt=$pdo->query($select_fuel);
                                 if($stmt->rowCount() > 0){
-                                    echo '<select class="form-control" id="brandsList" name="brand" onchange="getModels(this)">';
-                                    while($brand=$stmt->fetch()){
-                                    $selected_brand=$brand['brand'];
-                                    $selected_brand_id=$brand['id_brand'];
+                                    echo '<select class="form-control" id="fuelList" name="fuel">';
+                                    while($fuel=$stmt->fetch()){
+                                    $select_fuel=$fuel['fuel'];
+                                    $select_fuel_id=$fuel['id_fuel'];
                                     echo '                               
-                                        <option value="'.strval($selected_brand_id).'">'.strval($selected_brand).'</option>
+                                        <option value="'.strval($select_fuel_id).'">'.strval($select_fuel).'</option>
                                     ';
                                     }
                                     echo '</select>';
                                 }else{
-                                    echo '<select class="form-control" id="brandsList" disabled>
+                                    echo '<select class="form-control" id="fuelList" name="fuel" disabled>
                                     </select>';
                                 }
                             ?>
