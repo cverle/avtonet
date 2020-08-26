@@ -21,10 +21,10 @@
                                 $select_brand="SELECT brands.brand AS `brand`, brands.id_brands AS `id_brand` FROM `brands` ORDER BY brand ASC;";
                                 $stmt=$pdo->query($select_brand);
                                 if($stmt->rowCount() > 0){
-                                    echo '<select class="form-control" id="brandsList" name="brand">';
+                                    echo '<select class="form-control" id="brandsList" name="brand" onchange="getModels(this)">';
                                     while($brand=$stmt->fetch()){
                                     $selected_brand=$brand['brand'];
-                                    $selected_brand_id=$brand_id['id_brand'];
+                                    $selected_brand_id=$brand['id_brand'];
                                     echo '                               
                                         <option value="'.strval($selected_brand_id).'">'.strval($selected_brand).'</option>
                                     ';
@@ -40,15 +40,28 @@
                     <div class="form-group row">
                         <label for="brandsList" class="col-sm-2 col-form-label">Models</label>
                         <div class="col-sm-10">
+                            <select class="form-control" id="modelsList" name="model"></select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="imageOfCar" class="col-sm-2 col-form-label">Picture</label>
+                        <div class="col-sm-10">
+                            <input type="file" id="imageOfCar" name="imageOfCar" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="brandsList" class="col-sm-2 col-form-label">Brands</label>
+                        <div class="col-sm-10">
                             <?php
-                                $select_brand="SELECT brands.brand AS `brand` FROM `brands` ORDER BY brand ASC;";
+                                $select_brand="SELECT brands.brand AS `brand`, brands.id_brands AS `id_brand` FROM `brands` ORDER BY brand ASC;";
                                 $stmt=$pdo->query($select_brand);
                                 if($stmt->rowCount() > 0){
-                                    echo '<select class="form-control" id="brandsList" name="brand">';
+                                    echo '<select class="form-control" id="brandsList" name="brand" onchange="getModels(this)">';
                                     while($brand=$stmt->fetch()){
                                     $selected_brand=$brand['brand'];
+                                    $selected_brand_id=$brand['id_brand'];
                                     echo '                               
-                                        <option>'.strval($selected_brand).'</option>
+                                        <option value="'.strval($selected_brand_id).'">'.strval($selected_brand).'</option>
                                     ';
                                     }
                                     echo '</select>';
@@ -59,6 +72,7 @@
                             ?>
                         </div>
                     </div>
+                    <hr />
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">Add</button>
                     </div>
@@ -69,5 +83,35 @@
 
     <?php include('footer.php'); ?>
 </body>
+
+<script>
+    (function ($, window) {
+        $.fn.replaceOptions = function (options) {
+            var self, $option;
+
+            this.empty();
+            self = this;
+
+            $.each(options, function (index, option) {
+                $option = $("<option></option>")
+                    .attr("value", option.value)
+                    .text(option.text);
+                self.append($option);
+            });
+        };
+    })(jQuery, window);
+
+    function getModels(sel) {
+        //alert(sel.value);
+        $.ajax({
+            url: "./live_model_response.php?brand_id=" + sel.value,
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function (res) {
+                $("#modelsList").replaceOptions(res);
+            }
+        });
+    }
+</script>
 
 </html>
