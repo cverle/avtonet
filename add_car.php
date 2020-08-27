@@ -13,7 +13,7 @@
             <div class="container">
                 <h3>Add model:</h3>
                 <hr />
-                <form action="insert_car.php" method="POST">
+                <form action="insert_car.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group row">
                         <label for="brandsList" class="col-sm-2 col-form-label">Brands</label>
                         <div class="col-sm-10">
@@ -44,6 +44,15 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="brandsList" class="col-sm-2 col-form-label">Gear shift type</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="gear_shift" name="gear_shift" required>
+                                <option value="manual">Manual</option>
+                                <option value="automatic">Automatic</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="brandsList" class="col-sm-2 col-form-label">Fuel type</label>
                         <div class="col-sm-10">
                             <?php
@@ -67,9 +76,11 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="yearRegistration" class="col-sm-2 col-form-label">Year registered</label>
+                        <label for="yearRegistration" class="col-sm-2 col-form-label">Year registered <i>(from 1901 and
+                                up)</i></label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="yearRegistration" name="yearRegistration" placeholder="Eg. 2020" maxlength="4" size="4" required>
+                            <input type="text" class="form-control" id="yearRegistration" name="yearRegistration"
+                                placeholder="Eg. 2020" maxlength="4" size="4" required>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -79,9 +90,10 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="price" class="col-sm-2 col-form-label">Price</label>
+                        <label for="price" class="col-sm-2 col-form-label">Price <i>(max of 10000.00)</i></label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" min="0.00" max="10000.00" step="any" id="price" name="price" required>
+                            <input type="number" class="form-control" min="0.00" max="10000.00" step="any" id="price"
+                                name="price" required>
                         </div>
                     </div>
                     <hr />
