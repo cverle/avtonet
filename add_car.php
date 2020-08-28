@@ -11,7 +11,7 @@
     <section class="py-5">
         <div class="container-fluid" style="padding-top:10%;">
             <div class="container">
-                <h3>Add model:</h3>
+                <h3>Add car:</h3>
                 <hr />
                 <form action="insert_car.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group row">

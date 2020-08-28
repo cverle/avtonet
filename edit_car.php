@@ -11,8 +11,29 @@
     <section class="py-5">
         <div class="container-fluid" style="padding-top:10%;">
             <div class="container">
-                <h3>Add model:</h3>
+                <h3>Edit car:</h3>
                 <hr />
+                <?php
+                $car_id = $_POST['carID'];
+                    $select_car = "SELECT
+                                        cars.*,
+                                        pictures.url,
+                                        brands.*,
+                                        models.model,
+                                        fuel.fuel_type
+                                    FROM
+                                        cars
+                                    INNER JOIN pictures ON pictures.id_cars = cars.id_cars
+                                    INNER JOIN models ON models.id_models = cars.id_models
+                                    INNER JOIN brands ON brands.id_brands = models.id_brands
+                                    INNER JOIN fuel ON fuel.id_fuel = cars.id_fuel
+                                    WHERE
+                                        cars.id_cars = ?;";
+                    $stmt_car = $pdo->prepare($select_car);
+                    $stmt_car->execute([$car_id]);
+                    $original_data = $stmt_car->fetch();
+                    // print_r($original_data);
+                ?>
                 <form action="insert_car.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group row">
                         <label for="brandsList" class="col-sm-2 col-form-label">Brands</label>
@@ -23,11 +44,17 @@
                                 if($stmt->rowCount() > 0){
                                     echo '<select class="form-control" id="brandsList" name="brand" onchange="getModels(this)" required>';
                                     while($brand=$stmt->fetch()){
-                                    $selected_brand=$brand['brand'];
-                                    $selected_brand_id=$brand['id_brand'];
-                                    echo '                               
-                                        <option value="'.strval($selected_brand_id).'">'.strval($selected_brand).'</option>
-                                    ';
+                                        $selected_brand=$brand['brand'];
+                                        $selected_brand_id=$brand['id_brand'];
+                                        if($selected_brand == $original_data['brand']){
+                                            echo '                               
+                                                <option value="'.strval($selected_brand_id).'" selected>'.strval($selected_brand).'</option>
+                                            ';
+                                        }else{
+                                            echo '                               
+                                                <option value="'.strval($selected_brand_id).'">'.strval($selected_brand).'</option>
+                                            ';
+                                        }
                                     }
                                     echo '</select>';
                                 }else{
@@ -40,7 +67,27 @@
                     <div class="form-group row">
                         <label for="brandsList" class="col-sm-2 col-form-label">Models</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="modelsList" name="model" required></select>
+                            <select class="form-control" id="modelsList" name="model" required>
+                                <?php
+                                    $select_models_for_brand = "SELECT models.id_models, models.model FROM models WHERE models.id_brands = ?;";
+                                    $stmt=$pdo->prepare($select_models_for_brand);
+                                    $original_brand = $original_data['id_brands'];
+                                    $stmt->execute([$original_brand]);
+                                    while($models=$stmt->fetch()){
+                                        $selected_model = $models['model'];
+                                        $select_model_id = $models['id_models'];
+                                        if($selected_model == $original_data['model']){
+                                            echo '                               
+                                                <option value="'.strval($select_model_id).'" selected>'.strval($selected_model).'</option>
+                                            '; 
+                                        }else{
+                                            echo '                               
+                                                <option value="'.strval($select_model_id).'">'.strval($selected_model).'</option>
+                                            '; 
+                                        }
+                                    }
+                                ?>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -61,11 +108,17 @@
                                 if($stmt->rowCount() > 0){
                                     echo '<select class="form-control" id="fuelList" name="fuel" required>';
                                     while($fuel=$stmt->fetch()){
-                                    $select_fuel=$fuel['fuel'];
-                                    $select_fuel_id=$fuel['id_fuel'];
-                                    echo '                               
-                                        <option value="'.strval($select_fuel_id).'">'.strval($select_fuel).'</option>
-                                    ';
+                                        $selected_fuel=$fuel['fuel'];
+                                        $selected_fuel_id=$fuel['id_fuel'];
+                                        if($selected_fuel == $original_data['fuel_type']){
+                                            echo '                               
+                                                <option value="'.strval($selected_fuel_id).'" selected>'.strval($selected_fuel).'</option>
+                                            ';
+                                        }else{
+                                            echo '                               
+                                                <option value="'.strval($selected_fuel_id).'">'.strval($selected_fuel).'</option>
+                                            ';
+                                        }
                                     }
                                     echo '</select>';
                                 }else{
@@ -80,7 +133,7 @@
                                 up)</i></label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="yearRegistration" name="yearRegistration"
-                                placeholder="Eg. 2020" maxlength="4" size="4" required>
+                                placeholder="Eg. 2020" maxlength="4" size="4" required value="<?php echo $original_data['year_of_registration'];?>">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -90,10 +143,16 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="imageOfCar" class="col-sm-2 col-form-label">Picture selected</label>
+                        <div class="col-sm-10">
+                            <img src="<?php echo $original_data['url'];?>" class="rounded float-left" style="width: 18rem;">
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="price" class="col-sm-2 col-form-label">Price <i>(max of 10000.00)</i></label>
                         <div class="col-sm-10">
                             <input type="number" class="form-control" min="0.00" max="10000.00" step="any" id="price"
-                                name="price" required>
+                                name="price" required value="<?php echo $original_data['price'];?>">
                         </div>
                     </div>
                     <hr />
