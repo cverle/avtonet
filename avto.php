@@ -30,6 +30,7 @@
                             LIMIT 3;";
           $stmt_cars = $pdo->query($sql_select_cars);
           while($cars=$stmt_cars->fetch()){
+            $id_selected_car = $cars['id_cars'];
             echo'
               <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="' . $cars['url'] . '" alt="Card image cap">
@@ -39,6 +40,11 @@
                       Registered year: ' . $cars['year_of_registration'] . '<br />
                       Fuel type: ' . $cars['fuel_type'] . '<br />
                       Gear shift type: ' . $cars['gear_shifts'] . '</p>
+                      <hr />
+                      <div class="row">
+                        <div class="col"><form action="edit_car.php" method="POST"><input type="hidden" name="carID" value="' . $id_selected_car . '"><button type="submit" class="btn btn-success" style="float: right;">Edit</button></form></div>
+                        <div class="col"><div class="btn btn-danger" style="float: left;" onclick="deleteCar(' . $id_selected_car . ')">Delete</div></div>
+                      </div>
                 </div>
               </div>
             ';
@@ -98,5 +104,22 @@
   </section>
   <?php include('footer.php'); ?>
 </body>
+
+<script>
+  function deleteCar(carID) {
+    var r = confirm("Are you sure?");
+    if (r == true) {
+      $.ajax({
+        url: "./live_delete_car.php?car_id=" + carID,
+        type: 'GET',
+        dataType: 'json', // added data type
+        success: function (res) {
+          // done
+        }
+      });
+      location.reload();
+    }
+  }
+</script>
 
 </html>
