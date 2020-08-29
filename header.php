@@ -15,8 +15,8 @@ require('session.php');
 
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.php">Domov</a></li>
-          <li><a href="avto.php">Avto</a></li>
+          <li class="active"><a href="index.php">Home</a></li>
+          <li><a href="avto.php">Cars</a></li>
           <!-- <li><a href="moto.php">Moto</a></li>
           <li><a href="gospodarska.php">Gospodarska</a></li> -->
           <li><a href="#contact">Contact Us</a></li>
