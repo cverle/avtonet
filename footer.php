@@ -12,14 +12,14 @@
         <div class="map mb-4 mb-lg-0">
           <div id="mapid" style="height: 500px;"></div>
           <script>
-            var map = L.map('mapid').setView([51.505, -0.09], 13);
+            var map = L.map('mapid').setView([46.240689, 15.089337], 13);
 
             L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
               attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
 
-            L.marker([51.5, -0.09]).addTo(map)
-              .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+            L.marker([46.240689, 15.089337]).addTo(map)
+              .bindPopup('Don\'t dox me')
               .openPopup();
           </script>
         </div>
