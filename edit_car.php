@@ -36,7 +36,7 @@
                     $original_data = $stmt_car->fetch();
                     // print_r($original_data);
                 ?>
-                <form action="insert_car.php" method="POST" enctype="multipart/form-data">
+                <form action="edit_car.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group row">
                         <label for="brandsList" class="col-sm-2 col-form-label">Brands</label>
                         <div class="col-sm-10">
@@ -161,7 +161,7 @@
                     </div>
                     <hr />
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success">Add</button>
+                        <button type="submit" class="btn btn-success">Save</button>
                     </div>
                 </form>
             </div>
