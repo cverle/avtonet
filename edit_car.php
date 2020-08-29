@@ -36,7 +36,7 @@
                     $original_data = $stmt_car->fetch();
                     // print_r($original_data);
                 ?>
-                <form action="edit_car.php" method="POST" enctype="multipart/form-data">
+                <form action="edit_car_in_db.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group row">
                         <label for="brandsList" class="col-sm-2 col-form-label">Brands</label>
                         <div class="col-sm-10">
@@ -96,8 +96,19 @@
                         <label for="brandsList" class="col-sm-2 col-form-label">Gear shift type</label>
                         <div class="col-sm-10">
                             <select class="form-control" id="gear_shift" name="gear_shift" required>
-                                <option value="manual">Manual</option>
-                                <option value="automatic">Automatic</option>
+                                <?php
+                                    if($original_data['gear_shifts'] == 'manual'){
+                                        echo'
+                                            <option value="manual" selected>Manual</option>
+                                            <option value="automatic">Automatic</option>
+                                        ';
+                                    }else{
+                                        echo'
+                                            <option value="manual">Manual</option>
+                                            <option value="automatic" selected>Automatic</option>
+                                        ';
+                                    }
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -142,7 +153,7 @@
                     <div class="form-group row">
                         <label for="imageOfCar" class="col-sm-2 col-form-label">Picture</label>
                         <div class="col-sm-10">
-                            <input type="file" id="imageOfCar" name="imageOfCar" accept="image/*" required>
+                            <input type="file" id="imageOfCar" name="imageOfCar" accept="image/*">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -161,6 +172,7 @@
                     </div>
                     <hr />
                     <div class="form-group">
+                        <input type="hidden" value="<?php echo $original_data['id_cars'];?>" name="carID">
                         <button type="submit" class="btn btn-success">Save</button>
                     </div>
                 </form>
