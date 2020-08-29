@@ -89,11 +89,11 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h4>Contact Us</h4>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              Dolenja vas 106 <br>
+              3312, Prebold<br>
+              Slovenia <br>
+              <strong>Phone:</strong> +386 40 800 176<br>
+              <strong>Email:</strong> ziga.cverle@gmail.com<br>
             </p>
 
             <div class="social-links">
