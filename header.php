@@ -17,8 +17,8 @@ require('session.php');
         <ul>
           <li class="active"><a href="index.php">Domov</a></li>
           <li><a href="avto.php">Avto</a></li>
-          <li><a href="moto.php">Moto</a></li>
-          <li><a href="gospodarska.php">Gospodarska</a></li>
+          <!-- <li><a href="moto.php">Moto</a></li>
+          <li><a href="gospodarska.php">Gospodarska</a></li> -->
           <li><a href="#contact">Contact Us</a></li>
         
           <?php 
