@@ -20,7 +20,7 @@
 
             L.marker([46.240689, 15.089337]).addTo(map)
               .bindPopup('Don\'t dox me')
-              .openPopup();
+              // .openPopup();
           </script>
         </div>
       </div>
