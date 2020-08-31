@@ -113,9 +113,18 @@
                   <td>' . $cars['year_of_registration'] . '</td>
                   <td>' . $cars['fuel_type'] . '</td>
                   <td>' . $cars['gear_shifts'] . '</td>
-                  <td>' . $cars['price'] . ' &#8381;</td>
-                  <td><form action="edit_car.php" method="POST"><input type="hidden" name="carID" value="' . $id_selected_car . '"><button type="submit" class="btn btn-success" style="float: right;">Edit</button></form></td>
-                  <td><div class="btn btn-danger" style="float: left;" onclick="deleteCar(' . $id_selected_car . ')">Delete</div></td>
+                  <td>' . $cars['price'] . ' &#8381;</td>';
+
+                  $session_check_edit = "";
+                  $session_check_delete = "";
+                  if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
+                    $session_check_edit = '<form action="edit_car.php" method="POST"><input type="hidden" name="carID" value="' . $id_selected_car . '"><button type="submit" class="btn btn-success" style="float: right;">Edit</button></form>';
+                    $session_check_delete = '<div class="btn btn-danger" style="float: left;" onclick="deleteCar(' . $id_selected_car . ')">Delete</div>';
+                  }
+                  
+                  echo'
+                  <td>' . $session_check_edit . '</td>
+                  <td>' . $session_check_delete . '</td>
                 </tr>';
                 $count_cars++;
               }
