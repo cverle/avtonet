@@ -63,7 +63,13 @@
         </div>
         <hr />
         <div class="d-flex justify-content-center">
-          <a href="add_car.php" class="btn btn-success">Add car</a>
+          <?php
+            if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
+              echo'
+                <a href="add_car.php" class="btn btn-success">Add car</a>
+              ';
+            }
+          ?>
         </div>
         <table id="carTables" class="table table-striped display" style="width:100%">
           <thead>
@@ -132,8 +138,14 @@
         </div>
         <hr />
         <div class="d-flex justify-content-center">
-          <a href="add_brand.php" class="btn btn-success" style="margin:4px;">Add brand</a>
-          <a href="add_model.php" class="btn btn-success" style="margin:4px;">Add model</a>
+          <?php
+            if(isset($_SESSION['user_id']) && $_SESSION['user_id'] != ''){
+              echo'
+                <a href="add_brand.php" class="btn btn-success" style="margin:4px;">Add brand</a>
+                <a href="add_model.php" class="btn btn-success" style="margin:4px;">Add model</a>
+              ';
+            }
+          ?>
         </div>
         <table id="carBrandsModels" class="table table-striped display" style="width:100%">
           <thead>
