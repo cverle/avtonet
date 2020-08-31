@@ -9,7 +9,7 @@ require('session.php');
 
       <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an text logo -->
-        <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
+        <h1 class="text-light"><a href="#header"><span>Not yet Avto.net</span></a></h1>
         <a href="index.php" class="scrollto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
       </div>
 
