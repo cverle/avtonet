@@ -12,6 +12,11 @@
     // $imageOfCar = $_POST['imageOfCar'];
     $price = $_POST['price'];
 
+    if(!isset($_SESSION['user_id']) && $_SESSION['user_id'] == ''){
+        header('location: login.php');
+        die();
+    }
+
     if (!empty($brand) && !empty($model) && !empty($fuel) && !empty($yearRegistration) && !empty($price)) {
         if($_FILES['imageOfCar']['tmp_name']!=''){
 

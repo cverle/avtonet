@@ -2,6 +2,12 @@
     require('db.php');
     // require('session.php');
 
+    include('session.php');
+    if(!isset($_SESSION['user_id']) && $_SESSION['user_id'] == ''){
+        header('location: login.php');
+        die();
+    }
+
     $car_id = $_GET['car_id'];
     $select_car = "SELECT cars.id_cars FROM `cars` WHERE cars.id_cars = ?";
     $select_pic = "SELECT pictures.url FROM pictures WHERE pictures.id_cars = ?";

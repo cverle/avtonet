@@ -4,6 +4,12 @@
     $brand=$_POST['brand'];
     $model=$_POST['model'];
 
+    include('session.php');
+    if(!isset($_SESSION['user_id']) && $_SESSION['user_id'] == ''){
+        header('location: login.php');
+        die();
+    }
+
     if(!empty($brand)&&!empty($model)){
         $sql_check_brand="SELECT brands.brand FROM brands WHERE brands.brand = ?";
         $stmt = $pdo->prepare($sql_check_brand);
