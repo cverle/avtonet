@@ -10,7 +10,7 @@
   <?php include('header.php'); ?>
 
   <!-- ======= Intro Section ======= -->
-  <section id="intro" class="clearfix">
+  <section id="intro" class="clearfix"> -->
     <div class="container">
 
       <div class="intro-img">
@@ -28,7 +28,7 @@
     </div>
   </section><!-- End Intro Section -->
 
-  <main id="main">
+  <!-- <main id="main"> -->
 
     <!-- ======= About Section ======= -->
     <section id="about">
@@ -615,7 +615,7 @@
 
     
 
-  </main><!-- End #main -->
+  </main><!-- End #main
 
   <!-- ======= Footer ======= -->
  <?php include('footer.php'); ?>
