@@ -9,7 +9,11 @@
 
 <body>
 
-    <?php include('header.php'); ?>
+    <?php include('header.php'); 
+    if(!isset($_SESSION['user_id']) && $_SESSION['user_id'] == ''){
+        header('location: login.php');
+        die();
+    }?>
     <section class="py-5">
         <div class="container-fluid" style="padding-top:10%;">
             <div class="container">
