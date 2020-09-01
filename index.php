@@ -3,19 +3,46 @@
 
 <head>
   <?php require('css-js.php'); ?>
+  <style>
+    .parallax {
+      /* The image used */
+      background-image: url('./mercedes.jpg');
+      /* Create the parallax scrolling effect */
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      /* -webkit-filter: blur(5px);
+      -moz-filter: blur(5px);
+      -o-filter: blur(5px);
+      -ms-filter: blur(5px);
+      filter: blur(5px); */
+    }
+
+    .no-blur {
+      -webkit-filter: blur(0) !important;
+      -moz-filter: blur(0) !important;
+      -o-filter: blur(0) !important;
+      -ms-filter: blur(0) !important;
+      filter: blur(0) !important;
+    }
+  </style>
 </head>
 
 <body>
 
   <?php include('header.php'); ?>
-  <section class="py-5">
-    <div class="container-fluid" style="padding-top:10%;">
-      <div class="container">
-        <div class="d-flex justify-content-center">
+
+  <section class="parallax py-5">
+    <div class="container-fluid no-blur" style="padding-top:10%;">
+      <div class="container" style="background-color: white; -webkit-box-shadow: 0px 0px 10px 3px rgba(186,186,186,0.9);
+-moz-box-shadow: 0px 0px 10px 3px rgba(186,186,186,0.9);
+box-shadow: 0px 0px 10px 3px rgba(186,186,186,0.9);">
+        <div class="d-flex justify-content-center no-blur">
           <h1>Cool cars</h1>
         </div>
         <hr />
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center no-blur">
           <?php
             $sql_select_cars = "SELECT
                                   cars.*,
@@ -39,7 +66,7 @@
                   <img class="card-img-top" src="' . $cars['url'] . '" alt="Card image cap">
                   <div class="card-body">
                     <h5 class="card-title">' . $cars['brand'] . ', ' . $cars['model'] . '</h5>
-                    <p class="card-text">' . $cars['price'] . '&#8381;<br />
+                    <p class="card-text">' . $cars['price'] . ' &#8381;<br />
                         Registered year: ' . $cars['year_of_registration'] . '<br />
                         Fuel type: ' . $cars['fuel_type'] . '<br />
                         Gear shift type: ' . $cars['gear_shifts'] . '</p>
