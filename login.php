@@ -324,7 +324,7 @@
             if ($_GET['err']=='incorrect'){
                 echo'
                     <div class="alert alert-danger" role="alert">
-                      &#128532; uh-oh you have done a fucky wucky &#128532;
+                      &#128532; uh-oh what a mistake-a to make-a &#128532;
                     </div>
                 ';
             }
