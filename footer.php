@@ -33,11 +33,11 @@
           </div>
           <div class="col-md-4 info">
             <i class="ion-ios-email-outline"></i>
-            <p>ziga.cverle@gmail.com</p>
+            <p><a href="mailto:ziga.cverle@gmail.com">ziga.cverle@gmail.com</a></p>
           </div>
           <div class="col-md-3 info">
             <i class="ion-ios-telephone-outline"></i>
-            <p>+386 40 800 176</p>
+            <p><a href="tel:+386 40 800 176">+386 40 800 176</a></p>
           </div>
         </div>
 
@@ -109,8 +109,8 @@
             Dolenja vas 106 <br>
             3312, Prebold<br>
             Slovenia <br>
-            <strong>Phone:</strong> +386 40 800 176<br>
-            <strong>Email:</strong> ziga.cverle@gmail.com<br>
+            <strong>Phone:</strong> <a href="tel:+386 40 800 176" style="color: inherit;">+386 40 800 176</a><br>
+            <strong>Email:</strong> <a href="mailto:ziga.cverle@gmail.com" style="color: inherit;">ziga.cverle@gmail.com</a><br>
           </p>
 
           <div class="social-links">
