@@ -341,9 +341,9 @@
       </form>
 
       <!-- Remind Passowrd -->
-      <div id="formFooter">
-        <a class="underlineHover" href="#">Forgot Password?</a>
-      </div>
+        <!-- <a class="underlineHover" href="#">Forgot Password?</a>
+            <div id="formFooter"> -->
+</div>
 
     </div>
   </div>
